@@ -1,0 +1,32 @@
+create database university;
+ use university;
+create table department(dept_name varchar(20) primary key, building int ,budget int );
+create table instructor(ID int primary key,name varchar(20),dept_name varchar(20) ,salary int );
+create table student(ID int primary key,name varchar(20),dept_name varchar(20),tot_cred int );
+create table course(course_id int primary key, title varchar(20), dept_name varchar(20), credits int);
+create table classroom(building int, room_number int, capacity int, primary key(building,room_number));
+ create table time_slot(time_slot_id int,day int, start_time int, end_time int, primary key(time_slot_id,day,start_time));
+create table section(course_id int,sec_id int,semester int,year int,building int, room_number int, time_slot_id int, primary key(course_id,sec_id,semester,year));
+create table teaches(ID int,course_id int,sec_id int,semester int, year int, primary key(ID,course_id,sec_id,semester,year));
+create table takes(ID int,course_id int,sec_id int,semester int, year int,grade int, primary key(ID,course_id,sec_id,semester,year));
+create table advisor(s_ID int primary key,i_ID int);
+show tables;
+show databases;
+insert into classroom(building,room_number,capacity) values (1,11,120) ,(2,21,120) ,(3,32,60) ,(4,42,180) ,(5,52,60);
+
+insert into course(course_id,title,dept_name,credits) values ('Bio-1','Intro to Bio','Biology',3) ,('Bio-2','Genetics','Biology',4) ,('CS-1','Intro to CS','Computer',3) ,('CS-2','Robotics','Computer',4) ,('His-1','World History','History',4) ,('Mu-1','Music audio','Music',3) ,('Mu-12','Music video','Music',4) ,('Phy-2','Physics principles','Physics',4) ;
+
+ insert into department (dept_name,building,budget) values                                                                                                                -> ('Biology',5,700000),                                                                                                                                                    -> ('Computer',1,500000),                                                                                                                                                   -> ('History',4,300000),                                                                                                                                                    -> ('music',2,100000),                                                                                                                                                      ->
+ ('physics',3,400000); 
+
+ insert into instructor(inst_id,inst_name,dept_name,salary) values                                                                                                        -> (111,'ABC','Computer',65000),                                                                                                                                            -> (112,'PQR','Music',90000),                                                                                                                                               -> (113,'EFG','Physics',70000),                                                                                                                                             -> (114,'XYZ','History',50000),                                                                                                                                             -> (115,'LMN','Music',90000),                                                                                                                                               -> (116,'uvw','Physics',70000),                                                                                                                                             -> 
+(117,'STU','Bilogy',55000); 
+
+ insert into section(sec_id,semester,year,course_id,building,room_number,time_slot_id) values                                                                             -> ('S11',1,'FY','BIO-2',4,42,'t2'),                                                                                                                                        -> ('S12',2,'FY','Phy-2',3,32,'t3'),                                                                                                                                        -> ('S13',2,'SY','CS-1',1,11,'t4'),                                                                                                                                         -> ('S13',2,'SY','CS-2',3,32,'t5'),                                                                                                                                         -> ('S14',2,'TY','Mu-1',2,21,'t4'),                                                                                                                                         -> ('S14',2,'TY','Mu-2',2,21,'t2'),                                                                                                                                         -> ('S15',1,'FY','His-1',4,42,'t3'),                                                                                                                                        ->
+ ('S16',2,'TY','Bio-1',5,52,'t3');
+
+ insert into student(sid,sname,tot_cred,dept_name,inst_id) values                                                                                                         -> ('S1','Aashish',8,'Music',112),                                                                                                                                          -> 
+('S2','Rakesh',9,'Computer',111);                                                                                                                                    ->
+ ('S3','Chetan',9,'Music',114);                     
+ ('S4','Mayuri',9,'Physics',113),                                                                                                                                         -> ('S5','Priya',7,'Biology',112),                                                                                                                                          -> ('S6','Tanvi',6,'Computer',NULL),                                                                                                                                        ->
+ ('S7','Anushka',9,'History',NULL);
